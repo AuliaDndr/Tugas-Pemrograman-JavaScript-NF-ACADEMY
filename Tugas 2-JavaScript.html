@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 2 - JavaScript - Aulia Dinda Resthi Putri Pratama</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nama Pegawai</th>
+                <th>Umur</th>
+                <th>Jabatan</th>
+                <th>Status</th>
+                <th>Gaji Pokok</th>
+                <th>Tunjangan Jabatan</th>
+                <th>BPJS</th>
+                <th>Tunjangan Keluarga</th>
+                <th>Total Gaji</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Dodi Prayodi</td>
+                <td>25</td>
+                <td>Manajer</td>
+                <td>Menikah</td>
+                <td id="gajiPokok"></td>
+                <td id="tunjanganJabatan"></td>
+                <td id="bpjs"></td>
+                <td id="tunjanganKeluarga"></td>
+                <td id="totalGaji"></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="8">Total Gaji:</td>
+                <td id="totalGajiFooter"></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <script>
+        // Data Pegawai
+        const nama = 'Dodi Prayodi';
+        const umur = 25;
+        const jabatan = 'Manajer';
+        const status = 'Menikah';
+        
+        // Gaji pokok berdasarkan jabatan
+        let gajiPokok = 0;
+        if (jabatan === 'Manajer') {
+            gajiPokok = 15000000; // 15 juta untuk Manager
+        } else if (jabatan === 'Asisten Manajer') {
+            gajiPokok = 10000000; // 10 juta untuk Assistant Manager
+        } else if (jabatan === 'Staff') {
+            gajiPokok = 5000000; // 5 juta untuk Staff
+        }
+
+        // Tunjangan Jabatan (15% dari gaji pokok)
+        const tunjanganJabatan = gajiPokok * 0.15;
+
+        // BPJS (10% dari gaji pokok)
+        const bpjs = gajiPokok * 0.10;
+
+        // Tunjangan Keluarga (20% dari gaji pokok)
+        const tunjanganKeluarga = status === 'Menikah' ? gajiPokok * 0.20 : 0;
+
+        // Total gaji
+        const totalGaji = gajiPokok + tunjanganJabatan + bpjs + tunjanganKeluarga;
+
+        // Memperbarui tabel dengan nilai yang dihitung
+        document.getElementById('gajiPokok').textContent = gajiPokok.toLocaleString();
+        document.getElementById('tunjanganJabatan').textContent = tunjanganJabatan.toLocaleString();
+        document.getElementById('bpjs').textContent = bpjs.toLocaleString();
+        document.getElementById('tunjanganKeluarga').textContent = tunjanganKeluarga.toLocaleString();
+        document.getElementById('totalGaji').textContent = totalGaji.toLocaleString();
+        document.getElementById('totalGajiFooter').textContent = totalGaji.toLocaleString();
+    </script>
+</body>
+</html>
